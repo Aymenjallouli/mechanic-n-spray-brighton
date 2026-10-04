@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mechanic n Spray, car body repair and spray shop in Brighton</title>
+<meta name="description" content="Car body repair and spray shop on the Enterprise Estate, Hollingbury, Brighton. Dents, scratches, bumpers, alloys and resprays. Open 24 hours.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mechanic n Spray, car body repair and spray shop in Brighton">
+<meta property="og:description" content="Car body repair and spray shop on the Enterprise Estate, Hollingbury, Brighton. Dents, scratches, bumpers, alloys and resprays. Open 24 hours.">
+<meta name="theme-color" content="#F4C01E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181B'/%3E%3Cpath d='M13 47V17h8l11 15 11-15h8v30h-8V31L32 45 21 31v16z' fill='%23F4C01E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,600;125,600;125,800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoBodyShop",
+  "name": "Mechanic n Spray",
+  "description": "Car body repair and spray shop in Hollingbury, Brighton.",
+  "telephone": "+447983656512",
+  "email": "mechanicnspray@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Unit B 11, Enterprise Estate, Crowhurst Rd, Hollingbury",
+    "addressLocality": "Brighton",
+    "addressRegion": "Brighton and Hove",
+    "postalCode": "BN1 8AF",
+    "addressCountry": "GB"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 50.8667076, "longitude": -0.1244746 },
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJ87cqkL9Y30cR18zeGlQPtEg",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  }],
+  "sameAs": ["https://www.facebook.com/junjunmechanicnspray/"]
+}
+</script>
+<style>
+/* ==========================================================================
+   MECHANIC N SPRAY: design decisions
+   Palette: taken from their own photos. Asphalt graphite (#16181B) from the
+   workshop floor and the glossy X5; primer off-white (#F2F1EC) for the page;
+   masking-tape yellow (#F4C01E), the tape all over the BMW in the workshop
+   shot, as the one loud colour; steel blue (#3D5A7A) from the Ford's paint
+   for links and focus rings on light grounds.
+   Type: Archivo only. Expanded (125%) 800 for display, like badge lettering
+   on a tailgate; normal width 400/600 for reading. Four instances in total.
+   Hero: split editorial. Poster type on graphite at left, the X5 bleeding
+   off the right edge on desktop; on phones the photo follows the CTAs.
+   Rhythm: dark hero > light reviews > dark before/after > light services >
+   yellow 24/7 band (the oversized moment) > light map > dark contact.
+   Signature: masking-tape labels, before/after flip cards, live open badge,
+   swipeable review rail, count-up on the review total.
+   ========================================================================== */
+:root{
+  --bg:#F2F1EC; --surface:#FFFFFF; --ink:#16181B; --ink-soft:#50565E;
+  --brand:#F4C01E; --brand-ink:#16181B; --accent:#3D5A7A; --line:#DAD7CE;
+  --dark-2:#1F2226; --on-dark:#F2F1EC; --on-dark-soft:#AEB4BB; --line-dark:#34383E;
+  --star:#E9AE00; --ok:#46C17F;
+
+  --step--1:clamp(.875rem,.85rem + .12vw,.9375rem);
+  --step-0:clamp(1.0625rem,1.03rem + .16vw,1.15rem);
+  --step-1:clamp(1.2rem,1.12rem + .4vw,1.45rem);
+  --step-2:clamp(1.45rem,1.3rem + .8vw,2rem);
+  --step-3:clamp(1.8rem,1.5rem + 1.5vw,2.8rem);
+  --step-4:clamp(2.2rem,1.7rem + 2.6vw,3.9rem);
+  --step-5:clamp(2.9rem,1.9rem + 4.6vw,5.75rem);
+  --display:clamp(6rem,2.5rem + 17vw,15rem);
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+  --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px;
+  --section:clamp(56px,10vw,128px);
+  --gutter:clamp(16px,5vw,40px);
+  --container:1200px;
+  --header-h:64px;
+
+  --r-1:6px; --r-2:14px; --r-3:999px;
+  --shadow-1:0 1px 2px rgba(22,24,27,.05),0 3px 8px rgba(22,24,27,.06);
+  --shadow-2:0 2px 4px rgba(22,24,27,.06),0 14px 32px -10px rgba(22,24,27,.22);
+  --shadow-3:0 2px 6px rgba(0,0,0,.2),0 24px 48px -16px rgba(0,0,0,.6);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+@media (min-width:960px){:root{--header-h:72px}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+@media (min-width:768px){body{padding-bottom:0}}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:800;font-stretch:125%;line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.dark :focus-visible,.site-header :focus-visible,.actionbar :focus-visible,.hero :focus-visible{outline-color:var(--brand)}
+.band :focus-visible{outline-color:var(--ink)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:var(--space-4);top:var(--space-2);z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:var(--brand);color:var(--brand-ink);border-radius:var(--r-1);font-weight:600;text-decoration:none;transform:translateY(-200%)}
+.skip:focus{transform:none}
+.container{width:min(100% - 2 * var(--gutter),var(--container));margin-inline:auto}
+.section{padding-block:var(--section);scroll-margin-top:var(--header-h)}
+.dark{background:var(--ink);color:var(--on-dark)}
+.icon{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.icon--fill{fill:currentColor;stroke:none}
+
+/* Labels ------------------------------------------------------------- */
+.eyebrow{display:flex;align-items:center;gap:12px;font-stretch:125%;font-weight:600;font-size:var(--step--1);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.eyebrow::before{content:"";width:24px;height:3px;background:var(--brand);flex:none}
+.dark .eyebrow,.hero .eyebrow{color:var(--on-dark-soft)}
+.eyebrow .nw{white-space:nowrap}
+.eyebrow .sep{display:none}
+@media (min-width:640px){.eyebrow .sep{display:inline}}
+.tape{display:inline-block;padding:9px 16px 8px;background-color:var(--brand);background-image:repeating-linear-gradient(90deg,rgba(22,24,27,.06) 0 1px,transparent 1px 4px);color:var(--brand-ink);font-stretch:125%;font-weight:600;font-size:.875rem;line-height:1;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-2.5deg);clip-path:polygon(0 0,100% 0,calc(100% - 5px) 24%,100% 48%,calc(100% - 4px) 72%,100% 100%,0 100%,5px 76%,0 52%,4px 28%)}
+.section-head{display:grid;gap:var(--space-4);max-width:62ch;margin-bottom:var(--space-7)}
+.section-head h2{font-size:var(--step-4)}
+.section-head p{color:var(--ink-soft);max-width:54ch}
+.dark .section-head p{color:var(--on-dark-soft)}
+
+/* Buttons ------------------------------------------------------------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:var(--r-1);border:1.5px solid transparent;font-weight:600;font-size:var(--step-0);line-height:1.1;text-decoration:none;text-align:center;cursor:pointer;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn--brand{background:var(--brand);color:var(--brand-ink)}
+.btn--ghost{background:transparent;border-color:rgba(242,241,236,.32);color:var(--on-dark)}
+.btn--ink{background:var(--ink);color:var(--on-dark)}
+.btn--line{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn--sm{min-height:44px;padding:0 16px;font-size:.98rem}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;color:var(--accent);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.link-arrow .icon{transition:transform .3s var(--ease)}
+.link-arrow:hover .icon{transform:translate(2px,-2px)}
+
+/* Header -------------------------------------------------------------- */
+.site-header{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--on-dark);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
+.site-header.is-scrolled{border-color:var(--line-dark)}
+.header__bar{display:flex;align-items:center;gap:var(--space-4);height:var(--header-h)}
+.brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-right:auto;text-decoration:none}
+.brand__mark{width:36px;height:36px;flex:none}
+.brand__name{font-stretch:125%;font-weight:800;font-size:1.0625rem;letter-spacing:-.015em;line-height:1;white-space:nowrap}
+.brand__name em{font-style:normal;color:var(--brand)}
+.header__call{display:none}
+.menu-btn{display:grid;place-items:center;width:48px;height:48px;padding:0;background:none;border:1px solid var(--line-dark);border-radius:var(--r-1);color:inherit;cursor:pointer}
+.menu-btn .icon{width:22px;height:22px}
+.menu-btn .i-close,.menu-open .menu-btn .i-menu{display:none}
+.menu-open .menu-btn .i-close{display:block}
+.nav{display:none}
+@media (max-width:959.98px){
+  .menu-open{overflow:hidden}
+  .menu-open .nav{display:flex;flex-direction:column;position:fixed;inset:var(--header-h) 0 0 0;z-index:49;padding:var(--space-5) var(--gutter) calc(var(--space-6) + env(safe-area-inset-bottom));background:var(--ink);overflow-y:auto;animation:menuIn .4s var(--ease)}
+  .nav ul{display:grid;border-top:1px solid var(--line-dark)}
+  .nav li a{display:flex;align-items:center;justify-content:space-between;min-height:68px;border-bottom:1px solid var(--line-dark);font-stretch:125%;font-weight:800;font-size:var(--step-2);letter-spacing:-.02em;text-decoration:none}
+  .nav li a .icon{color:var(--brand)}
+  .nav__cta{margin-top:var(--space-6);width:100%}
+}
+@keyframes menuIn{from{opacity:0;transform:translateY(-10px)}}
+@media (min-width:768px){.header__call{display:inline-flex}}
+@media (min-width:960px){
+  .brand__mark{width:40px;height:40px}
+  .brand__name{font-size:1.15rem}
+  .menu-btn{display:none}
+  .nav{display:block;order:0}
+  .nav ul{display:flex;gap:var(--space-5)}
+  .nav li a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;font-size:.98rem;color:var(--on-dark-soft);text-decoration:none;transition:color .2s}
+  .nav li a:hover{color:var(--on-dark)}
+  .nav li a .icon,.nav__cta{display:none}
+  .header__call{margin-left:var(--space-3)}
+}
+
+/* Hero ---------------------------------------------------------------- */
+.hero{position:relative;background:var(--ink);color:var(--on-dark);overflow:hidden}
+.hero__inner{padding-block:var(--space-6) var(--space-7)}
+.hero__copy{display:grid;gap:var(--space-5);justify-items:start}
+.hero__title{font-size:var(--step-5);line-height:.98;letter-spacing:-.04em}
+.hero__title .l{display:block}
+.hero__title .y{display:block;margin-top:.45em;font-size:var(--step-2);font-weight:600;line-height:1.12;letter-spacing:-.015em;color:var(--brand)}
+.hero__lead{max-width:44ch;color:var(--on-dark-soft)}
+.hero__lead em{font-style:normal;color:var(--on-dark)}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:var(--space-3);width:100%}
+.hero__ctas .btn{flex:1 1 0;padding:0 14px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+.wide-only{display:none}
+.badge{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 14px;border-radius:var(--r-3);background:rgba(70,193,127,.13);font-size:var(--step--1);font-weight:600}
+.badge__dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+.badge__dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ring 2.4s var(--ease) infinite}
+.badge.is-closed{background:rgba(242,241,236,.08)}
+.badge.is-closed .badge__dot{background:#E2725B}
+.badge.is-closed .badge__dot::after{animation:none}
+.badge--light{background:rgba(46,158,98,.12);color:var(--ink)}
+.badge--light .badge__dot{background:#2E9E62}
+.badge--light.is-closed{background:rgba(22,24,27,.06)}
+@keyframes ring{from{transform:scale(1);opacity:.7}to{transform:scale(2.8);opacity:0}}
+.chip{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 14px;border:1px solid var(--line-dark);border-radius:var(--r-3);font-size:var(--step--1);text-decoration:none;transition:border-color .3s var(--ease)}
+.chip:hover{border-color:var(--brand)}
+.chip strong{font-weight:600}
+.stars{display:inline-flex;gap:2px;color:var(--brand)}
+.stars .icon{width:15px;height:15px}
+.hero__media{position:relative;margin:0}
+.hero__media img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:30% 55%}
+@media (min-width:640px){
+  .hero__ctas{width:auto}
+  .hero__ctas .btn{flex:none;padding:0 22px}
+  .wide-only{display:inline}
+  .narrow-only{display:none}
+  .hero__media img{aspect-ratio:16/9}
+}
+@media (min-width:960px){
+  .hero{display:flex;align-items:center;min-height:clamp(600px,calc(100svh - var(--header-h)),860px)}
+  .hero__inner{padding-block:var(--space-7) var(--space-8)}
+  .hero__copy{max-width:min(690px,53vw);gap:var(--space-6)}
+  .hero__lead{font-size:var(--step-1);line-height:1.5}
+  .hero__media{position:absolute;top:0;right:0;bottom:0;width:41%}
+  .hero__media img{height:100%;aspect-ratio:auto;object-position:28% 50%;animation:drift 22s var(--ease) both}
+  .hero__media::before{content:"";position:absolute;inset:0 auto 0 0;z-index:1;width:5px;background:var(--brand)}
+}
+@keyframes drift{from{transform:scale(1.08)}to{transform:scale(1)}}
+
+/* Reviews ------------------------------------------------------------- */
+.proof__head{display:grid;gap:var(--space-7);margin-bottom:var(--space-7)}
+.score{display:grid;gap:var(--space-3);justify-items:start;align-content:start}
+.score__num{font-stretch:125%;font-weight:800;font-size:clamp(5.5rem,3rem + 9vw,9.5rem);line-height:.82;letter-spacing:-.06em;margin-left:-.05em}
+.score .stars{color:var(--star)}
+.score .stars .icon{width:26px;height:26px}
+.score__count{font-size:var(--step-1);font-weight:600}
+.score__count span{font-variant-numeric:tabular-nums}
+.proof__intro{display:grid;gap:var(--space-4);align-content:end}
+.proof__intro h2{font-size:var(--step-4)}
+.proof__intro p{color:var(--ink-soft);max-width:52ch}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(86%,400px);gap:var(--space-4);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:var(--space-2) max(var(--gutter),calc((100% - var(--container)) / 2)) var(--space-5);scroll-padding-inline:max(var(--gutter),calc((100% - var(--container)) / 2));scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail:focus-visible{outline-offset:-3px}
+.review{display:flex;flex-direction:column;gap:var(--space-4);margin:0;padding:var(--space-6) var(--space-5) var(--space-5);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-2);box-shadow:var(--shadow-1);scroll-snap-align:start}
+.review__top{display:flex;align-items:center;justify-content:space-between}
+.review__q{width:34px;height:28px;color:var(--brand)}
+.review .stars{color:var(--star)}
+.review blockquote{flex:1;margin:0}
+.review figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid var(--line);font-size:var(--step--1);color:var(--ink-soft)}
+.review figcaption strong{font-size:var(--step-0);color:var(--ink)}
+.rail__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.rail__btns{display:flex;gap:var(--space-2)}
+.rail__btn{display:grid;place-items:center;width:48px;height:48px;padding:0;border:1.5px solid var(--ink);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.rail__btn:hover:not(:disabled){transform:scale(1.06)}
+.rail__btn:disabled{opacity:.3;cursor:default}
+@media (min-width:960px){
+  .proof__head{grid-template-columns:5fr 7fr;gap:var(--space-8);align-items:end}
+  .rail{grid-auto-columns:calc((min(100vw - 2 * var(--gutter),var(--container)) - 2 * var(--space-5)) / 3);gap:var(--space-5)}
+}
+
+/* Before / after ------------------------------------------------------ */
+.work__grid{display:grid;gap:var(--space-7)}
+.case{display:flex;flex-direction:column;gap:var(--space-4);margin:0}
+.ba{position:relative;aspect-ratio:4/5;border-radius:var(--r-2);overflow:hidden;background:var(--dark-2);box-shadow:var(--shadow-3);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.case--wide .ba{aspect-ratio:4/3}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
+.ba__after{opacity:0;transform:scale(1.04)}
+.ba[data-state="after"] .ba__after{opacity:1;transform:none}
+.ba__tag{position:absolute;top:var(--space-4);left:var(--space-4);z-index:2}
+.ba__tag .a,.ba[data-state="after"] .ba__tag .b{display:none}
+.ba[data-state="after"] .ba__tag .a{display:inline}
+.case__bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.case__title{font-size:var(--step-1);font-weight:600;line-height:1.25}
+.toggle{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line-dark);border-radius:var(--r-1)}
+.toggle button{min-width:64px;min-height:44px;padding:0 12px;border:0;border-radius:4px;background:transparent;color:var(--on-dark-soft);font-weight:600;font-size:var(--step--1);cursor:pointer;transition:background-color .3s var(--ease),color .3s var(--ease)}
+.toggle button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink)}
+.work__quote{display:grid;gap:var(--space-5);margin:0;padding:var(--space-2) 0 var(--space-2) var(--space-5);border-left:4px solid var(--brand)}
+.work__quote blockquote{margin:0}
+.work__quote p{font-stretch:125%;font-weight:600;font-size:var(--step-1);line-height:1.25;letter-spacing:-.02em}
+.work__quote figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);color:var(--on-dark-soft);font-size:var(--step--1)}
+.work__quote figcaption strong{color:var(--on-dark);font-size:var(--step-0)}
+@media (min-width:640px){
+  .work__grid{grid-template-columns:1fr 1fr;column-gap:var(--space-5)}
+  .case--wide,.work__quote{grid-column:1/-1}
+}
+@media (min-width:960px){
+  .work__grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-6);row-gap:var(--space-8)}
+  .case--wide{grid-column:1/8}
+  .case--b{grid-column:8/13}
+  .case--b .ba{flex:1;aspect-ratio:auto;min-height:0}
+  .case--c{grid-column:1/6}
+  .case--c .ba{aspect-ratio:1}
+  .work__quote{grid-column:7/13;align-self:center;padding-left:var(--space-6)}
+  .work__quote p{font-size:var(--step-2)}
+}
+
+/* Services ------------------------------------------------------------ */
+.services__grid{display:grid;gap:var(--space-7)}
+.services__media{position:relative;margin:0}
+.services__media img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:0% 50%;border-radius:var(--r-2);box-shadow:var(--shadow-2)}
+.services__media .tape{position:absolute;left:var(--space-4);bottom:var(--space-5)}
+.services__body .section-head{margin-bottom:0}
+.svc-cols{display:grid;gap:var(--space-7);margin-top:var(--space-7)}
+.svc-cols h3{padding-bottom:var(--space-3);border-bottom:2px solid var(--ink);font-size:var(--step--1);font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+.svc-list li{display:flex;align-items:baseline;gap:var(--space-4);padding-block:14px;border-bottom:1px solid var(--line);font-size:var(--step-1);font-weight:600;line-height:1.3}
+.svc-list li span{min-width:2em;font-stretch:125%;font-size:var(--step--1);color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.services__book{display:grid;gap:var(--space-4);justify-items:start;margin-top:var(--space-7);padding:var(--space-5);border-radius:var(--r-2);background:var(--surface);border:1px solid var(--line)}
+.services__book p{color:var(--ink-soft)}
+@media (min-width:640px){.svc-cols{grid-template-columns:1fr 1fr;gap:var(--space-6)}}
+@media (min-width:960px){
+  .services__grid{grid-template-columns:5fr 7fr;gap:var(--space-8);align-items:start}
+  .services__media{position:sticky;top:calc(var(--header-h) + var(--space-6))}
+  .services__media img{aspect-ratio:4/5}
+  .services__book{grid-template-columns:1fr auto;align-items:center}
+}
+
+/* 24/7 band ----------------------------------------------------------- */
+.band{position:relative;overflow:hidden;padding-block:clamp(56px,9vw,112px);background-color:var(--brand);background-image:repeating-linear-gradient(90deg,rgba(22,24,27,.035) 0 1px,transparent 1px 5px);color:var(--brand-ink)}
+.band__grid{display:grid;gap:var(--space-5);align-items:center}
+.band__num{font-stretch:125%;font-weight:800;font-size:var(--display);line-height:.8;letter-spacing:-.06em;margin-left:-.05em}
+.band__copy{display:grid;gap:var(--space-4);justify-items:start}
+.band h2{font-size:var(--step-3)}
+.band p{max-width:42ch}
+@media (min-width:960px){.band__grid{grid-template-columns:7fr 5fr;gap:var(--space-8)}}
+
+/* Visit --------------------------------------------------------------- */
+.visit__grid{display:grid;gap:var(--space-7)}
+.visit__info .section-head{margin-bottom:var(--space-5)}
+.visit address{font-style:normal;font-size:var(--step-1);line-height:1.45}
+.visit__actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-5)}
+.visit__actions .btn{flex:1 1 200px}
+@media (min-width:640px){.visit__actions .btn{flex:0 0 auto}}
+.access{display:grid;gap:var(--space-2);margin-top:var(--space-6)}
+.access li{display:flex;align-items:center;gap:var(--space-3);color:var(--ink-soft)}
+.access .icon{color:var(--accent)}
+.mini-quote{margin-top:var(--space-5);padding-left:var(--space-4);border-left:3px solid var(--brand);color:var(--ink-soft)}
+.mini-quote q{color:var(--ink);font-weight:600}
+.hours{padding:var(--space-5) var(--space-4) var(--space-3);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-2);box-shadow:var(--shadow-1)}
+.hours__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-3);padding-inline:var(--space-2);margin-bottom:var(--space-3)}
+.hours h3{font-size:var(--step-1)}
+.hours table{width:100%;border-collapse:collapse}
+.hours th,.hours td{padding:12px var(--space-2);border-bottom:1px solid var(--line);font-size:var(--step-0);text-align:left;font-weight:400}
+.hours td{text-align:right;color:var(--ink-soft);white-space:nowrap}
+.hours tr:last-child th,.hours tr:last-child td{border-bottom:0}
+.hours tr.is-today th,.hours tr.is-today td{background:rgba(244,192,30,.2);color:var(--ink);font-weight:600}
+.hours tr.is-today th{box-shadow:inset 4px 0 0 var(--brand)}
+.today-tag{display:none}
+.is-today .today-tag{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:var(--r-3);background:var(--ink);color:var(--on-dark);font-size:.75rem;font-weight:600;vertical-align:2px}
+.visit__map{display:grid;gap:var(--space-2);align-content:start}
+.map{position:relative;aspect-ratio:1;border-radius:var(--r-2);overflow:hidden;background:var(--line);box-shadow:var(--shadow-2)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:359.98px){.is-today .today-tag{display:none}}
+@media (min-width:640px){.map{aspect-ratio:4/3}}
+@media (min-width:960px){
+  .visit__grid{grid-template-columns:7fr 5fr;column-gap:var(--space-8);row-gap:var(--space-8);align-items:start}
+  .visit__map{grid-column:1/-1}
+  .map{aspect-ratio:21/9}
+}
+
+/* Contact ------------------------------------------------------------- */
+.contact__grid{display:grid;gap:var(--space-8)}
+.contact .section-head{margin-bottom:var(--space-6)}
+.contact-list{display:grid;border-top:1px solid var(--line-dark)}
+.contact-list a{display:flex;align-items:center;gap:var(--space-4);min-height:76px;padding-block:var(--space-3);border-bottom:1px solid var(--line-dark);text-decoration:none}
+.contact-list .ico{display:grid;place-items:center;width:46px;height:46px;flex:none;border-radius:50%;background:var(--dark-2);border:1px solid var(--line-dark);color:var(--brand);transition:transform .3s var(--ease)}
+.contact-list a:hover .ico{transform:scale(1.08)}
+.contact-list small{display:block;font-size:var(--step--1);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-soft)}
+.contact-list strong{display:block;font-size:var(--step-1);font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.contact-list .email{font-size:var(--step-0)}
+@media (min-width:480px){.contact-list .email{font-size:var(--step-1)}}
+.contact-list .go{margin-left:auto;color:var(--on-dark-soft);transition:transform .3s var(--ease)}
+.contact-list a:hover .go{transform:translateX(4px)}
+.msg{display:grid;gap:var(--space-4);padding:var(--space-6) var(--space-5);background:var(--dark-2);border:1px solid var(--line-dark);border-radius:var(--r-2)}
+.msg h3{font-size:var(--step-2)}
+.msg > p{color:var(--on-dark-soft);font-size:var(--step--1)}
+.field{display:grid;gap:6px}
+.field label{font-size:var(--step--1);font-weight:600;color:var(--on-dark-soft)}
+.field input,.field textarea{width:100%;min-height:50px;padding:12px 14px;background:var(--ink);color:var(--on-dark);border:1px solid var(--line-dark);border-radius:var(--r-1);font:inherit;font-size:1.0625rem}
+.field textarea{min-height:128px;resize:vertical}
+.field .hint{font-weight:400;color:#8C939A}
+.field input:focus-visible,.field textarea:focus-visible{outline-offset:0;border-color:var(--brand)}
+.msg__actions{display:grid;gap:var(--space-3);margin-top:var(--space-2)}
+@media (min-width:480px){.msg__actions{grid-template-columns:1fr 1fr}}
+.msg__actions .btn{padding:0 12px}
+@media (min-width:960px){.contact__grid{grid-template-columns:6fr 5fr;gap:var(--space-9);align-items:start}}
+
+/* Footer -------------------------------------------------------------- */
+.site-footer{padding-block:var(--space-8) var(--space-6);background:var(--ink);color:var(--on-dark-soft);border-top:1px solid var(--line-dark)}
+.footer__grid{display:grid;gap:var(--space-6)}
+.footer__grid h3{margin-bottom:var(--space-3);font-size:var(--step--1);font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--on-dark)}
+.footer__brand p{max-width:34ch;margin-top:var(--space-4)}
+.footer__grid address{font-style:normal}
+.footer__links li a{display:inline-flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--on-dark)}
+.footer__links li a:hover{color:var(--brand)}
+.footer__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-3);margin-top:var(--space-7);padding-top:var(--space-5);border-top:1px solid var(--line-dark);font-size:var(--step--1)}
+@media (min-width:960px){.footer__grid{grid-template-columns:5fr 4fr 3fr}}
+
+/* Mobile action bar --------------------------------------------------- */
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(3,1fr);background:var(--ink);border-top:1px solid var(--line-dark);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -10px 30px rgba(0,0,0,.18)}
+.actionbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:60px;color:var(--on-dark);font-size:.875rem;font-weight:600;text-decoration:none}
+.actionbar a + a{border-left:1px solid var(--line-dark)}
+.actionbar a.is-primary{background:var(--brand);color:var(--brand-ink)}
+@media (min-width:768px){.actionbar{display:none}}
+
+/* Archivo's semibold word space is tight: open it up on labels */
+.btn,.chip,.badge,.case__title,.svc-list li,.contact-list strong,.nav li a,.toggle button,.actionbar a,.review figcaption strong,.score__count,.hero__title .y{word-spacing:.08em}
+.eyebrow,.tape,.contact-list small,.svc-cols h3,.footer__grid h3{word-spacing:.18em}
+
+/* Reveal -------------------------------------------------------------- */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://mechanic-n-spray-brighton.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://mechanic-n-spray-brighton.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://mechanic-n-spray-brighton.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-text" viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-8l-5 4v-4H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M3.5 11.2 20 4l-7.2 16.5-2-7.3z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M16 3v4M8 3v4M4 11h16M9 15.5l2 2 4-4"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="9" cy="16" r="5"/><circle cx="11" cy="4" r="1.2"/><path d="M11 7v6h5l2.5 5H20M11 10h5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 20 20"><path d="m10 1.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 34 28"><path d="M0 28V17C0 7.6 5 1.6 13.6 0l1.6 4.2C10.4 5.6 8 9 7.8 13.4H14V28zm19 0V17c0-9.4 5-15.4 13.6-17l1.4 4.2c-4.8 1.4-7.2 4.8-7.4 9.2H33V28z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header__bar">
+    <a class="brand" href="#top" aria-label="Mechanic n Spray, back to top">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#F4C01E"/><path d="M13 47V17h8l11 15 11-15h8v30h-8V31L32 45 21 31v16z" fill="#16181B"/></svg>
+      <span class="brand__name">Mechanic <em>n</em> Spray</span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#reviews">Reviews <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#work">Before &amp; after <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#services">Services <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#visit">Hours &amp; map <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li><a href="#contact">Contact <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      </ul>
+      <a class="btn btn--brand nav__cta" href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 07983 656512</a>
+    </nav>
+    <a class="btn btn--brand btn--sm header__call" href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>07983 656512</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg class="icon i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon i-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow"><span>Car body repair &amp; spray<span class="sep"> ·</span> <span class="nw">Hollingbury, Brighton</span></span></p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="l">Dented.</span> <span class="l">Scraped.</span> <span class="l">Kerbed.</span>
+          <span class="y">Put right on Crowhurst Road.</span>
+        </h1>
+        <p class="hero__lead">Minor touch-ups to complete resprays, from JunJun Medran’s team at Unit B 11, Enterprise Estate. The phrase customers keep using: <em>“good as new”</em>.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--brand" href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Call <span class="narrow-only">now</span><span class="wide-only">07983 656512</span></span></a>
+          <a class="btn btn--ghost" href="https://www.fixter.co.uk/garage/mechanic-n-spray" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>Book online</a>
+        </div>
+        <div class="hero__meta">
+          <a class="chip" href="https://www.google.com/maps/place/?q=place_id:ChIJ87cqkL9Y30cR18zeGlQPtEg" target="_blank" rel="noopener">
+            <span class="stars" aria-hidden="true"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+            <span><strong>5.0</strong> · 294 Google reviews</span>
+          </a>
+          <p class="badge" data-open-badge><span class="badge__dot" aria-hidden="true"></span><span data-open-text>Open 24 hours, 7 days</span></p>
+        </div>
+      </div>
+    </div>
+    <figure class="hero__media">
+      <img src="assets/photos/photo-12.jpg" width="1600" height="1350" fetchpriority="high" alt="A dark blue BMW X5 with a deep, glossy finish, trees reflected in the bonnet">
+    </figure>
+  </section>
+
+  <section class="section proof" id="reviews" aria-labelledby="reviews-title">
+    <div class="container proof__head">
+      <div class="score reveal">
+        <p class="eyebrow">Google reviews</p>
+        <p class="score__num" aria-label="Rated 5.0 out of 5">5.0</p>
+        <span class="stars" aria-hidden="true"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+        <p class="score__count">from <span data-count="294">294</span> reviews on Google</p>
+      </div>
+      <div class="proof__intro reveal">
+        <h2 id="reviews-title">Jun gets named in review after review.</h2>
+        <p>For being kind, for the updates while the car is in, and for the finish when it comes out. Eight of the 294, word for word.</p>
+      </div>
+    </div>
+
+    <div class="rail reveal" tabindex="0" role="region" aria-label="Customer reviews, scroll sideways for more">
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>I needed some work done on my car before it’s MOT. … I was able to leave my car there and then and Jun Jun and the team worked hard to get the repairs done over the weekend. I was given regular updates of the work and It was a super quick turnaround. … As a female, garages can be intimidating and this wasn’t the case with Jun Jun and the team! Everything was explained…</p></blockquote>
+        <figcaption><strong>Kimberley N.</strong><span>September 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>I recently had the wheels on my Mercedes CLA repaired here… All the scratches and curb damage were completely removed, and the wheels now look as good as new. A special thank you to Jun, who was incredibly kind, professional, and helpful throughout the whole process.</p></blockquote>
+        <figcaption><strong>Van V.</strong><span>June 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>the guys at the shop are seriously talented individuals with a brilliant turn around time. took my car in for a same day rear headlight fault, calling in the morning and being asked to come in within 30 minutes. … brilliant communication throughout the day with no lies or problems with the price. picked up the car a couple hours later as promised with it all fixed…</p></blockquote>
+        <figcaption><strong>L</strong><span>August 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>I thought my car door was going to be a total eyesore and a write off, but Junjun Medran and his team worked their magic. … The repair is perfect and the finish is flawless. It’s officially back to "good as new" status! Junjun personally collected and delivered my car.</p></blockquote>
+        <figcaption><strong>Crystal D.</strong><span>March 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>When I was driving home my car was hit by a deer, which caused a significant amount of damage to my bumper and front wing. I saw the advert for Mechanic n Spray and spoke with Junjun, who was able to start the repairs right away, his team did a superb job. My car is back on the road looking like new again…</p></blockquote>
+        <figcaption><strong>Dominic</strong><span>May 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>my polo Vauxhall window button was broken and every place I went to said it couldn’t be fixed but they solved it in an instant, location easy to get to too … You’ll leave with smiles and a new friend the staff are lovely to work with highly recommend, they won’t disappoint.</p></blockquote>
+        <figcaption><strong>Caye G.</strong><span>June 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>Excellent service and fantastic workmanship. After my car was damaged by another driver, the team repaired it perfectly and it now looks better than when I bought it second hand! …</p></blockquote>
+        <figcaption><strong>jamilla S.</strong><span>June 2026</span></figcaption>
+      </figure>
+      <figure class="review">
+        <div class="review__top"><svg class="review__q icon--fill" aria-hidden="true"><use href="#i-quote"/></svg><span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span></div>
+        <blockquote><p>Don’t look for other garage. Just go in Mechanic Spray you’ll never regret. … Jun jun’s Team are very professional and friendly they know what to do to make you smile while waiting and repairing the car.</p></blockquote>
+        <figcaption><strong>phone H.</strong><span>March 2026</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="container rail__foot">
+      <a class="link-arrow" href="https://www.google.com/maps/place/?q=place_id:ChIJ87cqkL9Y30cR18zeGlQPtEg" target="_blank" rel="noopener">Read all 294 reviews on Google <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+      <div class="rail__btns">
+        <button class="rail__btn" type="button" data-rail="-1" aria-label="Previous reviews"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+        <button class="rail__btn" type="button" data-rail="1" aria-label="Next reviews"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section work dark" id="work" aria-labelledby="work-title">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">The work</p>
+        <h2 id="work-title">Before. After.</h2>
+        <p>Three cars as they came in and as they went home. Tap a photo, or the switch beneath it, to flip between the two.</p>
+      </header>
+
+      <div class="work__grid">
+        <figure class="case case--wide reveal">
+          <div class="ba" data-state="after">
+            <img class="ba__before" src="assets/photos/photo-01.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="Before: blue Ford with deep white scrapes across the front door and a crumpled sill">
+            <img class="ba__after" src="assets/photos/photo-03.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="After: the same blue Ford with the door and sill smooth and evenly painted">
+            <span class="tape ba__tag" aria-hidden="true"><span class="b">Before</span><span class="a">After</span></span>
+          </div>
+          <figcaption class="case__bar">
+            <span class="case__title">Scraped door and sill</span>
+            <span class="toggle" role="group" aria-label="Scraped door and sill photo">
+              <button type="button" data-show="before" aria-pressed="false">Before</button>
+              <button type="button" data-show="after" aria-pressed="true">After</button>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="case case--b reveal">
+          <div class="ba" data-state="after">
+            <img class="ba__before" src="assets/photos/photo-04.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Before: Mercedes AMG alloy wheel with the rim and spokes chewed up by kerb damage">
+            <img class="ba__after" src="assets/photos/photo-05.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="After: the Mercedes AMG alloy wheel refinished, rim clean and sharp">
+            <span class="tape ba__tag" aria-hidden="true"><span class="b">Before</span><span class="a">After</span></span>
+          </div>
+          <figcaption class="case__bar">
+            <span class="case__title">Kerbed alloy wheel</span>
+            <span class="toggle" role="group" aria-label="Kerbed alloy wheel photo">
+              <button type="button" data-show="before" aria-pressed="false">Before</button>
+              <button type="button" data-show="after" aria-pressed="true">After</button>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="case case--c reveal">
+          <div class="ba" data-state="after">
+            <img class="ba__before" src="assets/photos/photo-10.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Before: silver hatchback with the front bumper split open below the headlight">
+            <img class="ba__after" src="assets/photos/photo-11.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="After: the same silver hatchback with the front bumper whole again and colour-matched">
+            <span class="tape ba__tag" aria-hidden="true"><span class="b">Before</span><span class="a">After</span></span>
+          </div>
+          <figcaption class="case__bar">
+            <span class="case__title">Split front bumper</span>
+            <span class="toggle" role="group" aria-label="Split front bumper photo">
+              <button type="button" data-show="before" aria-pressed="false">Before</button>
+              <button type="button" data-show="after" aria-pressed="true">After</button>
+            </span>
+          </figcaption>
+        </figure>
+
+        <figure class="work__quote reveal">
+          <blockquote><p>“The paint match is spot on, communication was great throughout, and the before-and-after photos show the amazing transformation.”</p></blockquote>
+          <figcaption>
+            <span class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span>
+            <strong>jamilla S.</strong> Google review, June 2026
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services" id="services" aria-labelledby="services-title">
+    <div class="container services__grid">
+      <figure class="services__media reveal">
+        <img src="assets/photos/photo-09.jpg" width="1600" height="1200" loading="lazy" decoding="async" alt="A technician kneeling beside a silver BMW X3 in the workshop, doors open and panels masked with yellow tape">
+        <figcaption class="tape">In the workshop</figcaption>
+      </figure>
+      <div class="services__body">
+        <header class="section-head reveal">
+          <p class="eyebrow">What we fix</p>
+          <h2 id="services-title">From a touch-up to a full respray.</h2>
+          <p>Bodywork and paint is the core of it. The team also takes on the mechanical and electrical jobs people bring in, like the window button one driver had been told couldn’t be fixed.</p>
+        </header>
+        <div class="svc-cols">
+          <div class="reveal">
+            <h3>Body &amp; paint</h3>
+            <ul class="svc-list">
+              <li><span>01</span>Minor touch-ups</li>
+              <li><span>02</span>Complete resprays</li>
+              <li><span>03</span>Dent removal</li>
+              <li><span>04</span>Scratch repair</li>
+              <li><span>05</span>Bumper repair</li>
+              <li><span>06</span>Front wings and wing mirrors</li>
+              <li><span>07</span>Alloy wheel repair</li>
+              <li><span>08</span>Car polishing</li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <h3>Mechanical &amp; electrical</h3>
+            <ul class="svc-list">
+              <li><span>09</span>Urgent roadside help</li>
+              <li><span>10</span>Oil leaks</li>
+              <li><span>11</span>Engine warning lights</li>
+              <li><span>12</span>Headlight and electrical faults</li>
+              <li><span>13</span>Repairs before an MOT</li>
+            </ul>
+          </div>
+        </div>
+        <div class="services__book reveal">
+          <p>Rather book online? Mechanic n Spray is listed on Fixter, the garage booking site.</p>
+          <a class="btn btn--line" href="https://www.fixter.co.uk/garage/mechanic-n-spray" target="_blank" rel="noopener">Book through Fixter <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="band-title">
+    <div class="container band__grid">
+      <p class="band__num reveal" aria-hidden="true">24/7</p>
+      <div class="band__copy reveal">
+        <h2 id="band-title">Open 24 hours, seven days a week.</h2>
+        <p>Urgent roadside help is one of the services, and the phone is the quickest way in. Same number, day or night.</p>
+        <a class="btn btn--ink" href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 07983 656512</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section visit" id="visit" aria-labelledby="visit-title">
+    <div class="container visit__grid">
+      <div class="visit__info">
+        <header class="section-head reveal">
+          <p class="eyebrow">Find us</p>
+          <h2 id="visit-title">On the Enterprise Estate, Hollingbury.</h2>
+        </header>
+        <div class="reveal">
+          <address>Unit B 11, Enterprise Estate<br>Crowhurst Rd, Hollingbury<br>Brighton BN1 8AF</address>
+          <div class="visit__actions">
+            <a class="btn btn--ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mechanic%20n%20Spray%2C%20Unit%20B%2011%2C%20Mechanic%20n%20Spray%2C%20Enterprise%20Estate%2C%20Crowhurst%20Rd%2C%20Hollingbury%2C%20Brighton%20and%20Hove%2C%20Brighton%20BN1%208AF" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-nav"/></svg>Get directions</a>
+            <a class="btn btn--line" href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call ahead</a>
+          </div>
+          <ul class="access">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-wheel"/></svg>Wheelchair-accessible car park</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-wheel"/></svg>Wheelchair-accessible entrance</li>
+          </ul>
+          <p class="mini-quote"><q>location easy to get to too</q> Caye G., Google review</p>
+        </div>
+      </div>
+
+      <div class="hours reveal" id="hours">
+        <div class="hours__head">
+          <h3>Opening hours</h3>
+          <p class="badge badge--light" data-open-badge><span class="badge__dot" aria-hidden="true"></span><span data-open-text>Open 24 hours, 7 days</span></p>
+        </div>
+        <table>
+          <caption class="sr-only">Opening hours, Monday to Sunday</caption>
+          <tbody>
+            <tr data-day="monday"><th scope="row">Monday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+            <tr data-day="tuesday"><th scope="row">Tuesday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+            <tr data-day="wednesday"><th scope="row">Wednesday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+            <tr data-day="thursday"><th scope="row">Thursday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+            <tr data-day="friday"><th scope="row">Friday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+            <tr data-day="saturday"><th scope="row">Saturday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+            <tr data-day="sunday"><th scope="row">Sunday<span class="today-tag">Today</span></th><td>Open 24 hours</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+      <div class="visit__map reveal">
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=Mechanic%20n%20Spray%2C%20Unit%20B%2011%2C%20Mechanic%20n%20Spray%2C%20Enterprise%20Estate%2C%20Crowhurst%20Rd%2C%20Hollingbury%2C%20Brighton%20and%20Hove%2C%20Brighton%20BN1%208AF&amp;output=embed" title="Map showing Mechanic n Spray on the Enterprise Estate, Crowhurst Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <a class="link-arrow" href="https://www.google.com/maps/place/?q=place_id:ChIJ87cqkL9Y30cR18zeGlQPtEg" target="_blank" rel="noopener">Open in Google Maps <svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact dark" id="contact" aria-labelledby="contact-title">
+    <div class="container contact__grid">
+      <div>
+        <header class="section-head reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Tell Jun what happened.</h2>
+          <p>Call or text 07983 656512, or send an email. For bodywork, a few photos of the damage sent by text are a good start.</p>
+        </header>
+        <ul class="contact-list reveal">
+          <li><a href="tel:+447983656512"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span><small>Call</small><strong>07983 656512</strong></span><svg class="icon go" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="sms:+447983656512?&amp;body=Hello%20JunJun%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20repair%20on%20my%20car.%20Thank%20you."><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-text"/></svg></span><span><small>Text</small><strong>07983 656512</strong></span><svg class="icon go" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="mailto:mechanicnspray@gmail.com?subject=Repair%20enquiry"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><span><small>Email</small><strong class="email">mechanicnspray@<wbr>gmail.com</strong></span><svg class="icon go" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="https://www.fixter.co.uk/garage/mechanic-n-spray" target="_blank" rel="noopener"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span><small>Book online</small><strong>Fixter</strong></span><svg class="icon go" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+          <li><a href="https://www.facebook.com/junjunmechanicnspray/" target="_blank" rel="noopener"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></span><span><small>Facebook</small><strong>junjunmechanicnspray</strong></span><svg class="icon go" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        </ul>
+      </div>
+
+      <form class="msg reveal" id="msg" novalidate>
+        <h3>Write it out first</h3>
+        <p>This opens your messages or email app with everything filled in. Nothing is sent until you press send there.</p>
+        <div class="field"><label for="m-name">Your name</label><input id="m-name" name="m-name" type="text" autocomplete="name"></div>
+        <div class="field"><label for="m-car">Your car <span class="hint">make and model</span></label><input id="m-car" name="m-car" type="text"></div>
+        <div class="field"><label for="m-what">What needs doing <span class="hint">where the damage is, or what’s wrong</span></label><textarea id="m-what" name="m-what"></textarea></div>
+        <div class="msg__actions">
+          <button class="btn btn--brand" type="submit" value="sms"><svg class="icon" aria-hidden="true"><use href="#i-text"/></svg>Send as text</button>
+          <button class="btn btn--ghost" type="submit" value="email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Send as email</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Mechanic n Spray, back to top">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#F4C01E"/><path d="M13 47V17h8l11 15 11-15h8v30h-8V31L32 45 21 31v16z" fill="#16181B"/></svg>
+          <span class="brand__name" style="color:var(--on-dark)">Mechanic <em>n</em> Spray</span>
+        </a>
+        <p>Car body repair and spray shop in Hollingbury, Brighton. Open 24 hours, every day.</p>
+      </div>
+      <div>
+        <h3>Workshop</h3>
+        <address>Unit B 11, Enterprise Estate<br>Crowhurst Rd, Hollingbury<br>Brighton BN1 8AF</address>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <ul class="footer__links">
+          <li><a href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>07983 656512</a></li>
+          <li><a href="mailto:mechanicnspray@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email</a></li>
+          <li><a href="https://www.facebook.com/junjunmechanicnspray/" target="_blank" rel="noopener" aria-label="Mechanic n Spray on Facebook"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Mechanic n Spray</p>
+      <p>Owner: JunJun Medran</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="is-primary" href="tel:+447983656512"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+  <a href="sms:+447983656512?&amp;body=Hello%20JunJun%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20repair%20on%20my%20car.%20Thank%20you."><svg class="icon" aria-hidden="true"><use href="#i-text"/></svg>Text</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Mechanic%20n%20Spray%2C%20Unit%20B%2011%2C%20Mechanic%20n%20Spray%2C%20Enterprise%20Estate%2C%20Crowhurst%20Rd%2C%20Hollingbury%2C%20Brighton%20and%20Hove%2C%20Brighton%20BN1%208AF" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-nav"/></svg>Directions</a>
+</nav>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasIO = 'IntersectionObserver' in window;
+  const PHONE = '+447983656512', EMAIL = 'mechanicnspray@gmail.com';
+
+  d.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  /* Menu */
+  const btn = d.querySelector('.menu-btn'), nav = d.getElementById('site-nav');
+  const setMenu = open => {
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    root.classList.toggle('menu-open', open);
+  };
+  btn.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  d.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && root.classList.contains('menu-open')) { setMenu(false); btn.focus(); }
+  });
+  matchMedia('(min-width: 960px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  const header = d.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Hours: parsed from the business data, evaluated in Brighton time */
+  const HOURS = { sunday: 'Open 24 hours', monday: 'Open 24 hours', tuesday: 'Open 24 hours', wednesday: 'Open 24 hours', thursday: 'Open 24 hours', friday: 'Open 24 hours', saturday: 'Open 24 hours' };
+  const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const toMin = (h, m, ap) => {
+    h = +h; m = +(m || 0);
+    if (ap) { ap = ap.toLowerCase(); if (ap === 'pm' && h < 12) h += 12; if (ap === 'am' && h === 12) h = 0; }
+    return h * 60 + m;
+  };
+  const parse = s => {
+    s = String(s || '').toLowerCase().trim();
+    if (!s || /closed|fermé/.test(s)) return [];
+    if (/24\s*(h|hours)|open 24/.test(s)) return [[0, 1440]];
+    const out = [];
+    s.split(/[,;]/).forEach(part => {
+      const m = part.match(/(\d{1,2})(?:[:.h](\d{2}))?\s*(am|pm)?\s*[–—-]\s*(\d{1,2})(?:[:.h](\d{2}))?\s*(am|pm)?/);
+      if (!m) return;
+      const a = toMin(m[1], m[2], m[3] || (m[6] === 'pm' && +m[1] < +m[4] ? 'pm' : m[3]));
+      let b = toMin(m[4], m[5], m[6]);
+      if (b <= a) b += 1440;
+      out.push([a, b]);
+    });
+    return out;
+  };
+  const sched = DAYS.map(k => parse(HOURS[k]));
+  const fmt = m => {
+    m %= 1440; const h = Math.floor(m / 60), mm = m % 60;
+    return (h % 12 || 12) + (mm ? ':' + String(mm).padStart(2, '0') : '') + (h < 12 ? 'am' : 'pm');
+  };
+  const now = () => {
+    try {
+      const p = {};
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'long', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+        .formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+      const day = DAYS.indexOf(String(p.weekday).toLowerCase());
+      if (day > -1) return { day, min: (+p.hour % 24) * 60 + +p.minute };
+    } catch (e) {}
+    const t = new Date(); return { day: t.getDay(), min: t.getHours() * 60 + t.getMinutes() };
+  };
+  const status = () => {
+    const { day, min } = now();
+    const full = r => r.length === 1 && r[0][0] === 0 && r[0][1] >= 1440;
+    if (sched.every(full)) return { day, open: true, text: 'Open now · 24 hours, 7 days' };
+    for (const [a, b] of sched[day]) {
+      if (min >= a && min < b) return { day, open: true, text: full(sched[day]) ? 'Open now · 24 hours today' : 'Open now · closes at ' + fmt(b) };
+    }
+    for (const [, b] of sched[(day + 6) % 7]) {
+      if (b > 1440 && min + 1440 < b) return { day, open: true, text: 'Open now · closes at ' + fmt(b) };
+    }
+    for (let i = 0; i < 8; i++) {
+      const di = (day + i) % 7;
+      for (const [a] of sched[di]) {
+        if (i === 0 && a <= min) continue;
+        const when = i === 0 ? 'at ' : i === 1 ? 'tomorrow at ' : cap(DAYS[di]) + ' at ';
+        return { day, open: false, text: 'Closed · opens ' + when + fmt(a) };
+      }
+    }
+    return { day, open: false, text: 'Closed' };
+  };
+  const paintHours = () => {
+    const s = status();
+    d.querySelectorAll('[data-open-badge]').forEach(el => {
+      el.classList.toggle('is-open', s.open); el.classList.toggle('is-closed', !s.open);
+      el.querySelector('[data-open-text]').textContent = s.text;
+    });
+    d.querySelectorAll('[data-day]').forEach(tr => {
+      const today = tr.dataset.day === DAYS[s.day];
+      tr.classList.toggle('is-today', today);
+      if (today) tr.setAttribute('aria-current', 'date'); else tr.removeAttribute('aria-current');
+    });
+  };
+  paintHours(); setInterval(paintHours, 60000);
+
+  /* Before / after flip cards */
+  const cases = [...d.querySelectorAll('.case')];
+  cases.forEach(c => {
+    const ba = c.querySelector('.ba'), btns = c.querySelectorAll('[data-show]');
+    c.flip = (v, user) => {
+      ba.dataset.state = v;
+      btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.show === v)));
+      if (user) c.dataset.touched = '1';
+    };
+    btns.forEach(b => b.addEventListener('click', () => c.flip(b.dataset.show, true)));
+    ba.addEventListener('click', () => c.flip(ba.dataset.state === 'after' ? 'before' : 'after', true));
+  });
+  if (!reduce && hasIO) {
+    cases.forEach(c => c.flip('before'));
+    // Flip only once the visitor has lingered on a card, so the damage is seen first.
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const c = e.target;
+      clearTimeout(c.timer);
+      if (c.dataset.touched) return io.unobserve(c);
+      if (e.isIntersecting) c.timer = setTimeout(() => { if (!c.dataset.touched) c.flip('after'); io.unobserve(c); }, 1300);
+    }), { threshold: 0.6 });
+    cases.forEach(c => io.observe(c));
+  }
+
+  /* Review rail */
+  const rail = d.querySelector('.rail');
+  const railBtns = d.querySelectorAll('[data-rail]');
+  const railState = () => {
+    const max = rail.scrollWidth - rail.clientWidth - 4;
+    railBtns[0].disabled = rail.scrollLeft <= 4;
+    railBtns[1].disabled = rail.scrollLeft >= max;
+  };
+  railBtns.forEach(b => b.addEventListener('click', () => {
+    const card = rail.querySelector('.review');
+    const step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 16) : 320;
+    rail.scrollBy({ left: step * +b.dataset.rail, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+  rail.addEventListener('scroll', railState, { passive: true });
+  addEventListener('resize', railState); railState();
+
+  /* Count-up */
+  if (!reduce && hasIO) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = 1400;
+      const tick = t => {
+        const p = Math.min(1, (t - t0) / dur);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }), { threshold: 0.6 });
+    d.querySelectorAll('[data-count]').forEach(el => io.observe(el));
+  }
+
+  /* Reveal on scroll */
+  const rv = d.querySelectorAll('.reveal');
+  if (!reduce && hasIO) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    rv.forEach(el => io.observe(el));
+  } else rv.forEach(el => el.classList.add('is-in'));
+
+  /* Message helper: opens SMS or email with the details filled in */
+  const form = d.getElementById('msg');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const val = id => form.elements[id].value.trim();
+    const name = val('m-name'), car = val('m-car'), what = val('m-what');
+    const msg = 'Hello JunJun, ' + (name ? 'this is ' + name + '. ' : '') +
+      (car ? 'My car is a ' + car + '. ' : '') +
+      (what || 'I’d like to ask about a repair.') + ' Thank you.';
+    const via = e.submitter && e.submitter.value === 'email' ? 'email' : 'sms';
+    location.href = via === 'email'
+      ? 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Repair enquiry' + (car ? ' – ' + car : '')) + '&body=' + encodeURIComponent(msg)
+      : 'sms:' + PHONE + '?&body=' + encodeURIComponent(msg);
+  });
+})();
+</script>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Preview made by Aymen Jallouli for Mechanic n Spray: this is not yet the business's official website.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
